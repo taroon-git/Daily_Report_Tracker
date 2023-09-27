@@ -1,0 +1,43 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-shadow: border-box;
+
+}
+.Nheader{
+    background-color: #1b8dff;
+    display: flex;
+}
+.Nnav{
+    display: flex;
+    justify-content: end;
+    margin-left: auto;
+
+}
+.Nul{
+    display: flex;
+    gap: 2rem;
+    padding: 1rem;
+    
+
+}
+.Nli{
+    list-style: none;
+}
+button{
+    padding: 6px;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 700;
+    
+}
+button:hover{
+    color: white; 
+    background-color: #9092ec4b; 
+     box-shadow: 0 2px 4px;
+     cursor: pointer;
+}
+#heading{
+float: left ;
+
+}

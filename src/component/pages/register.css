@@ -1,0 +1,79 @@
+/* Add this CSS to your stylesheet or component */
+.container1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 5px;
+    /* background-color: #f0f0f0; */
+    
+  }
+  
+  .form-container {
+    /* background-color: #fff; */
+    background-color: bisque;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    margin-top: 35px
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: -6px;
+
+    width: 380px;
+    
+  }
+  
+  label {
+    margin-bottom: 8px;
+  }
+  
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="password"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    
+  }
+  
+  button[type="submit"] {
+    background-color: #0275d8;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    width: 85px;
+    margin-left: 9.5rem;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+
+  #firstName{
+    width: 94%;
+  }
+
+  #lastName{
+    width: 94%;
+  }
+
+  #roleName{
+    width: 94%;
+  }
+
+
