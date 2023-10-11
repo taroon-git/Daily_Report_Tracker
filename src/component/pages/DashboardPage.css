@@ -1,7 +1,7 @@
-/* DashboardPage.css (or DashboardPage.scss) */
+
 .dash {
     background-color: #f0f0f0;
-    height: 100vh; /* Set the height to fill the viewport */
+    height: 100vh; 
   }
   
   header {
@@ -30,12 +30,33 @@
   }
   
   nav a:hover {
-    color: #ff5722; /* Change the color on hover */
+    color: #ff5722; 
   }
   
   main {
     padding: 20px;
   }
   
-  /* Additional styling for your main content can be added here */
   
+.dash {
+  background-color: #f0f0f0;
+  animation: myAnimation 5s infinite alternate;
+}
+
+@keyframes myAnimation {
+  0% {
+    background-color: #f0f0f0;
+  }
+  100% {
+    background-color: #00bcd4; 
+  }
+  100% {
+    background-color: #f5b7d4b6; 
+  }
+  100% {
+    background-color: #b9cf77cb; 
+  }
+}
+
+
+

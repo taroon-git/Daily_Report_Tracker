@@ -1,4 +1,4 @@
-/* CSS for the mainheading */
+
 .mainheading {
     display: flex; 
     justify-content: left; 
@@ -17,10 +17,19 @@
   }
    */
 
-   #heading{
-    padding-top: 1rem;
-    text-align: left;
+
+   @media screen and (max-width: 768px) {
+    .mainheading{
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #heading {
+      text-align: center;
+    }
    }
+
+
    .nav-ho{
     background-color: whitesmoke;
     height: 80px;
@@ -43,3 +52,15 @@
     margin-top: 13px;
     color: white;
    }
+
+
+
+   .element {
+    margin: 10px;
+   }
+
+   .element {
+    padding: 10px;
+   }
+   
+   

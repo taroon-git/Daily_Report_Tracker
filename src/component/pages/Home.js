@@ -8,11 +8,7 @@ import { Link } from 'react-router-dom';
 function Home() {
   return (
     <div>
-        
-
-      {/* <ReportSubmissionForm/> */}
       <div className='navigation-home'>
-      
       <header className='Nheader'>
           <img
             id='logo'
@@ -26,16 +22,19 @@ function Home() {
           
           <nav className='Nnav'>
             <ul className='Nul'>
-              
               <li className='Nli'>
                 <Link to='/register'>
                   <button>Register</button>
                 </Link>
               </li>
+              <li className='Nli'>
+                <Link to='/contact-us'>
+                  <button>ContactUs</button>
+                </Link>
+              </li>
             </ul>
           </nav>
         </header>
-      
       </div>
 
       <div className='bg'>

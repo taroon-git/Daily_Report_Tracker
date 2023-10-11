@@ -1,24 +1,26 @@
-/* login.css */
+ /* login.css */
 
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
-    /* height: 50vh; */
    
     width: 540px;
     margin-top: -38rem;
     margin-left: 7rem;
 
-    /* background-color: rgba(235, 255, 174, 0.717); */
   }
   
   .form-container {
-    background-color: #f7f7f7;
     border: 1px solid #ddd;
     padding: 20px;
-    width: 300px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 8rem;
+
+    margin-top: -352px;
+    border-radius: 15px;
+    background-color: gainsboro;
+    
   }
   
   h1 {
@@ -40,6 +42,7 @@
     margin-bottom: 16px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    
   }
   
   button {
@@ -53,11 +56,61 @@
     
     
   }
+
+  button[type="login"] {
+    width: 70%;
+    max-width: 130px;
+    margin-left: 10.5rem;
+    margin-bottom: -1rem;
+
+  }
   
   button:hover {
     background-color: #84ba04;
   }
-  #i{
-     height: 120vh;
+
+  #username{
+    width: 300px;
   }
-  
+
+  #password{
+    width: 300px;
+    height: 2.5rem;
+  }
+   
+
+   /* Default styles for larger screens */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 540px;
+  margin-top: -38rem;
+  margin-left: 7rem;
+}
+
+.form-container {
+  border: 1px solid #ddd;
+  padding: 20px;
+  width: 400px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  margin-left: 8rem;
+  margin-top: -352px;
+  border-radius: 15px;
+  background-color: gainsboro;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .container {
+      width: auto; 
+      margin-left: 0;
+  }
+
+  .form-container {
+      width: 80%; 
+      margin: 0 auto;
+      margin-top: 20px; 
+  }
+}

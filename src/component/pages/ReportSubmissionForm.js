@@ -1,384 +1,217 @@
 import React, { useState } from 'react';
 import './ReportSubmissionForm.css';
-// import Navbar from '../Navbar';
-import ReportListPage from './ReportListPage';
-
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import axios from 'axios'; // Import Axios
 
 
 const ReportSubmissionForm = () => {
-  
-    const [formData, setFormData] = useState({
-        date: '',
-        name: '',
-        projectName: '',
-        hoursWorked: '',
-        comments: '',
+  const [data, setdata] = useState({
+    date: new Date(),
+    name: '',
+    project: '',
+    time: '',
+    discription: '',
+  });
+ 
+  const [errors, setErrors] = useState({});
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setdata({
+      ...data,
+      [name]: value,
     });
- const[fdata, setFdata] = useState({})
-    const [errors, setErrors] = useState({});
+  };
+  const handleDateChange = (date) => {
+    setdata({
+      ...data,
+      date,
+    });
+  };
+   // HTTP headers for the axios request
+  const headers = {
+    'Content-Type': 'application/json',
+  }
 
-    const handleInputChange = (e) => {
-     const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value,
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const validationErrors = {};
+    if (!data.date) {
+      validationErrors.date = 'Date is required.';
+    }
+    if (!data.name) {
+      validationErrors.name = 'Name is required.';
+    }
+    if (!data.project) {
+      validationErrors.projecte = 'Project Name is required.';
+   }
+    if (!data.time) {
+      validationErrors.time = 'Hours Worked is required.';
+    }
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+    } else {
+      try {
+
+        const response = await axios.post('http://1992.168.68.36:8000/api/v1/add', data,{headers});       
+        console.log('Form submitted:', response.data);
+        alert(response.data.message);      
+        setdata({
+          date: new Date(),
+          name: '',
+          project: '',
+          time: '',
+          discription: '',
         });
-    };
+      } catch (error) {   
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const validationErrors = {};
+        console.error('Error submitting form:', error);     
 
-        if (!formData.date) {
-            validationErrors.date = 'Date is required.';
-        }
+      }
+    }
+  };
+  return (
+    <>
+    
 
-        if (!formData.name) {
-            validationErrors.name = 'Name is required.';
-        }
+ 
 
-        if (!formData.projectName) {
-            validationErrors.projectName = 'Project Name is required.';
-        }
+      <div className="report-submission">
 
-        if (!formData.hoursWorked) {
-            validationErrors.hoursWorked = 'Hours Worked is required.';
-        }
+        <h2 className="h1">Report Submission</h2>
 
-        if (Object.keys(validationErrors).length > 0) {
-            setErrors(validationErrors);
+        <form onSubmit={handleSubmit}>
 
-        } else {
+          <div className="form-group">
 
-            console.log('Form submitted:', formData);
-            
-          setFdata({
-            date: formData.date,
-            name: formData.name,
-            projectName: formData.projectName,
-            hoursWorked: formData.hoursWorked,
-            comments: formData.comments,
-          })
-            setFormData({
-                date: '',
-                name: '',
-                projectName: '',
-                hoursWorked: '',
-                comments: '',
-            });
+            <label>Date</label>
 
-        }
+            <DatePicker
 
-    };
-   
-    return (
-        <>
-        
-        <ReportListPage ds={fdata} />
-         
-        <div className="report-submission">
-            <h2 className='h1'>Report Submission</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Date</label>
-                    <input
-                        type="text"
-                        name="date"
-                        value={formData.date}
-                        onChange={handleInputChange}
-                    />
-                    {errors.date && <div className="error">{errors.date}</div>}
-                </div>
+              selected={data.date}
 
-                
-                <div className="form-group">
-                    <label>Name</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                    />
-                    {errors.name && <div className="error">{errors.name}</div>}
-                </div>
-                <div className="form-group">
-                    <label>Project Name</label>
-                    <input
-                        type="text"
-                        name="projectName"
-                        value={formData.projectName}
-                        onChange={handleInputChange}
-                    />
+              onChange={handleDateChange}
 
-                    {errors.projectName && <div className="error">{errors.projectName}</div>}
-                </div>
+              dateFormat="MM-dd-yyyy"
 
-                <div className="form-group">
-                    <label>Hours Worked</label>
-                    <input
-                        type="text"
-                        name="hoursWorked"
-                        value={formData.hoursWorked}
-                        onChange={handleInputChange}
-                    />
-                    {errors.hoursWorked && <div className="error">{errors.hoursWorked}</div>}
-                </div>
-                <div className="form-group">
-                    <label>Comments</label>
-                    <textarea
-                        name="comments"
-                        value={formData.comments}
-                        onChange={handleInputChange}
-                    />
-                </div>
+            />
 
-                <button id="btn" type="submit">Submit</button>
-            </form>
-        </div>
-        </>
-    );
+            {errors.date && <div className="error">{errors.date}</div>}
+
+          </div>
+
+ 
+
+          <div className="form-group">
+
+            <label>Name</label>
+
+            <input
+
+              type="text"
+
+              name="name"
+
+              value={data.name}
+
+              onChange={handleInputChange}
+
+            />
+
+            {errors.name && <div className="error">{errors.name}</div>}
+
+          </div>
+
+ 
+
+          <div className="form-group">
+
+            <label>Project Name</label>
+
+            <input
+
+              type="text"
+
+              name="project"
+
+              value={data.project}
+
+              onChange={handleInputChange}
+
+            />
+
+            {errors.project && (
+
+              <div className="error">{errors.project}</div>
+
+            )}
+
+          </div>
+
+ 
+
+          <div className="form-group">
+
+            <label>Hours Worked</label>
+
+            <input
+
+              type="text"
+
+              name="time"
+
+              value={data.time}
+
+              onChange={handleInputChange}
+
+            />
+
+            {errors.time && (
+
+              <div className="error">{errors.time}</div>
+
+            )}
+
+          </div>
+
+ 
+
+          <div className="form-group">
+
+            <label>Discription</label>
+
+            <textarea
+
+            type="text"
+
+              name="discription"
+
+              value={data.discription}
+
+              onChange={handleInputChange}
+
+            />
+
+          </div>
+
+ 
+
+          <button id="btn" type="submit">
+
+            Submit
+
+          </button>
+
+        </form>
+
+      </div>
+
+    </>
+
+  );
 
 };
+
+ 
+
 export default ReportSubmissionForm;
-
-
-// ReportSubmissionForm.js
-
-
-// function ReportSubmissionForm({ onReportSubmit }) {
-//   const [formData, setFormData] = useState({
-//     date: '',
-//     name: '',
-//     projectName: '',
-//     hoursWorked: '',
-//     comments: '',
-//   });
-
-//   const [errors, setErrors] = useState({});
-
-//   const handleInputChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({
-//       ...formData,
-//       [name]: value,
-//     });
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     const validationErrors = {};
-
-//     if (!formData.date) {
-//       validationErrors.date = 'Date is required.';
-//     }
-
-//     if (!formData.name) {
-//       validationErrors.name = 'Name is required.';
-//     }
-
-//     if (!formData.projectName) {
-//       validationErrors.projectName = 'Project Name is required.';
-//     }
-
-//     if (!formData.hoursWorked) {
-//       validationErrors.hoursWorked = 'Hours Worked is required.';
-//     }
-
-//     if (Object.keys(validationErrors).length > 0) {
-//       setErrors(validationErrors);
-//     } else {
-//       console.log('Form submitted:', formData);
-//       onReportSubmit(formData); // Add the report to the parent component's state or perform any desired action
-//       setFormData({
-//         date: '',
-//         name: '',
-//         projectName: '',
-//         hoursWorked: '',
-//         comments: '',
-//       });
-//     }
-//   };
-
-//   return (
-//     <div className="report-submission">
-//       <h2 className="h1">Report Submission</h2>
-//       <form onSubmit={handleSubmit}>
-//         <div className="form-group">
-//           <label>Date</label>
-//           <input
-//             type="text"
-//             name="date"
-//             value={formData.date}
-//             onChange={handleInputChange}
-//           />
-//           {errors.date && <div className="error">{errors.date}</div>}
-//         </div>
-
-//         <div className="form-group">
-//           <label>Name</label>
-//           <input
-//             type="text"
-//             name="name"
-//             value={formData.name}
-//             onChange={handleInputChange}
-//           />
-//           {errors.name && <div className="error">{errors.name}</div>}
-//         </div>
-//         <div className="form-group">
-//           <label>Project Name</label>
-//           <input
-//             type="text"
-//             name="projectName"
-//             value={formData.projectName}
-//             onChange={handleInputChange}
-//           />
-
-//           {errors.projectName && (
-//             <div className="error">{errors.projectName}</div>
-//           )}
-//         </div>
-
-//         <div className="form-group">
-//           <label>Hours Worked</label>
-//           <input
-//             type="text"
-//             name="hoursWorked"
-//             value={formData.hoursWorked}
-//             onChange={handleInputChange}
-//           />
-//           {errors.hoursWorked && (
-//             <div className="error">{errors.hoursWorked}</div>
-//           )}
-//         </div>
-//         <div className="form-group">
-//           <label>Comments</label>
-//           <textarea
-//             name="comments"
-//             value={formData.comments}
-//             onChange={handleInputChange}
-//           />
-//         </div>
-
-//         <button id="btn" type="submit">
-//           Submit
-//         </button>
-//       </form>
-//     </div>
-//   );
-// }
-
-// export default ReportSubmissionForm;
-
-
-
-// // ReportSubmissionForm.js
-
-
-// import React, { useState } from 'react';
-// import './ReportSubmissionForm.css';
-// const ReportSubmissionForm = ({ onReportSubmit }) => {
-//   const [formData, setFormData] = useState({
-//     date: '',
-//     name: '',
-//     projectName: '',
-//     hoursWorked: '',
-//     comments: '',
-//   });
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-//     setFormData({
-//       ...formData,
-//       [name]: value,
-//     });
-//   };
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     onReportSubmit(formData);
-//     setFormData({
-//       date: '',
-//       name: '',
-//       projectName: '',
-//       hoursWorked: '',
-//       comments: '',
-//     });
-//   };
-
-//   return (
-//     <div className="report-submission">
-//       <h2>Report Submission</h2>
-//       <form onSubmit={handleSubmit}>
-//         <div className="form-group">
-//           <label htmlFor="date">Date:</label>
-//           <input
-//             type="text"
-//             name="date"
-//             id="date"
-//             placeholder="Enter the date"
-//             value={formData.date}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="name">Name:</label>
-//           <input
-//             type="text"
-//             name="name"
-//             id="name"
-//             placeholder="Enter your name"
-//             value={formData.name}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="projectName">Project Name:</label>
-//           <input
-//             type="text"
-//             name="projectName"
-//             id="projectName"
-//             placeholder="Enter project name"
-//             value={formData.projectName}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="hoursWorked">Hours Worked:</label>
-//           <input
-//             type="text"
-//             name="hoursWorked"
-//             id="hoursWorked"
-//             placeholder="Enter hours worked"
-//             value={formData.hoursWorked}
-//             onChange={handleChange}
-//             required
-//           />
-//         </div>
-
-//         <div className="form-group">
-//           <label htmlFor="comments">Comments:</label>
-//           <textarea
-//             name="comments"
-//             id="comments"
-//             placeholder="Enter comments"
-//             value={formData.comments}
-//             onChange={handleChange}
-//           />
-//         </div>
-
-//         <button type="submit">Submit</button>
-//       </form>
-//     </div>
-//   );
-// };
-
-// export default ReportSubmissionForm;
-
-
-
