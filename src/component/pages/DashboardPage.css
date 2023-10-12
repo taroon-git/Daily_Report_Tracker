@@ -9,6 +9,13 @@
     color: #fff;
     padding: 19px 0;
   }
+
+  .bg2{
+    height: 38rem;
+    width: 100%;
+    display: flow;
+    background-repeat: no-repeat;
+  }
   
   nav ul {
     list-style-type: none;

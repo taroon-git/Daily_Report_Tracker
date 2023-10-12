@@ -7,25 +7,16 @@ import Navbar from '../Navbar';
 import bg2 from './bg2.png';
 
 
+
 function DashboardPage() {
   return (
     <div className='dash'>
       <Navbar></Navbar>
       
-      <main>
-        {/* Your dashboard content goes here */}
-        <img
-          src={bg2}
-          style={{
-            height: '563px',
-            width: '758px',
-            display: 'flex',
-            justifyContent: 'centre',
-            margin: 'auto',
-          }}
-          alt="Background Image2"
-        />
-      </main>
+        <main>
+        <img  className='bg2' src={bg2} alt="Background Image2" />
+      </main> 
+       
     </div>
   );
 }

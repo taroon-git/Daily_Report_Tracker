@@ -1,34 +1,22 @@
 
-
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import React, { useState } from 'react';
-
 import { Link, useNavigate } from 'react-router-dom';
-
 import axios from 'axios';
-
 import '../pages/login.css';
 
  
 
 function Login() {
-
   const [data, setData] = useState({
-
     email: '',
-
     password: '',
-
   });
-
- 
 
   const [error, setError] = useState();
 
   const navigate = useNavigate();
-
- 
 
   const handleChange = (e) => {
 
@@ -43,135 +31,66 @@ function Login() {
     }));
 
   };
-
- 
-
   const headers = {
 
     'Content-Type' : 'application/json',
-
   };
 
- 
-
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-
- 
-
     try {
-
       const response = await axios.post(
 
-        'http://192.168.68.36:8000/api/v1/login', data,{headers});
-
- 
-
- 
+        'http://192.168.68.41:8000/api/v1/login', data,{headers});
 
       if (response.status === 200) {
-
-       
-
-        alert('Login successful');
-
+        // alert('Login successful');
+        toast.success('Login successful');
         navigate('/login/dashboard');
 
       } else {
-
         alert('Login failed. Please check your credentials.');
-
       }
-
     } catch (error) {
-
       alert('Invalid Username or password.');
-
     }
-
   };
 
- 
-
- 
-
- 
-
   return (
-
 <div id='i'>
-
+<ToastContainer position='bottom-right' />
 <div className='form-container' style={{ marginTop: '-352px' }}>
 
-<h1 className='text-center' style={{ color: '#0275d8' }}>
-
-          Login
-
-</h1>
-
+<h1 className='text-center' style={{ color: '#0275d8' }}>Login</h1>
 <form onSubmit={handleSubmit}>
-
 <label htmlFor='username'>Email:</label>
-
-<input
-
+      <input
             type='text'
-
             name='email'
-
             id='email'
-
-            required
-
+            require
             placeholder='Enter your Email'
-
             value={data.email}
-
             onChange={handleChange}
-
           />
 
 <label htmlFor='password'>Password:</label>
-
-<input
-
-            type='password'
-
-            name='password'
-
+        <input
+              type='password'
+              name='password'
             id='password'
-
             required
-
             placeholder='Enter your password'
-
             value={data.password}
-
             onChange={handleChange}
-
           />
-
-<button type='login'>Login</button>
-
-</form>
-
- <Link to='/register'><p>Don't have Account..!</p></Link>
-
-</div>
-
-</div>
-
+          <button type='login'>Login</button>
+    </form>
+          <Link to='/register'><p>Don't have Account..!</p></Link>
+      </div>
+      </div>
   );
-
 }
-
- 
-
- 
-
- 
-
 export default Login;
 
 

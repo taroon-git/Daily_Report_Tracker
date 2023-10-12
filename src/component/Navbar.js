@@ -20,6 +20,9 @@
             <li>
               <Link to="/">Logout</Link>
             </li>
+            <li>
+              <Link to="/dashboard/employeelist">EmployeeList</Link>
+            </li>
           </ul>
         </nav>
       </header>

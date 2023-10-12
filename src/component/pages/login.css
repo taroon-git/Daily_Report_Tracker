@@ -60,7 +60,7 @@
   button[type="login"] {
     width: 70%;
     max-width: 130px;
-    margin-left: 10.5rem;
+    margin-left: 13.5rem;
     margin-bottom: -1rem;
 
   }
@@ -74,7 +74,7 @@
   }
 
   #password{
-    width: 300px;
+    width: 351px;
     height: 2.5rem;
   }
    
