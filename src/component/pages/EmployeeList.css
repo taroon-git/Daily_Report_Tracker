@@ -1,0 +1,42 @@
+
+
+.employee-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  
+  .employee-card {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    width: 300px; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 10px;
+    text-align: left;
+  }
+  
+  .employee-card strong {
+    font-weight: bold;
+  }
+  
+  
+  .employee-card h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  
+  
+  .employee-card label {
+    font-weight: bold;
+  }
+  
+  
+  .employee-card p {
+    margin: 0;
+    padding: 0;
+  }
+  
