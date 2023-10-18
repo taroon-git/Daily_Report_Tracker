@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import './DashboardPage.css'; // Import your CSS file
 import Navbar from '../Navbar';
 import bg2 from './bg2.png';
+import Profile from './Profile';
 
 
 
@@ -12,9 +13,9 @@ function DashboardPage() {
   return (
     <div className='dash'>
       <Navbar></Navbar>
-      
+      <Profile></Profile>
         <main>
-        <img  className='bg2' src={bg2} alt="Background Image2" />
+        {/* <img  className='bg2' src={bg2} alt="Background Image2" /> */}
       </main> 
        
     </div>

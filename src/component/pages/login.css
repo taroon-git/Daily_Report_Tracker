@@ -98,6 +98,7 @@
   margin-top: -352px;
   border-radius: 15px;
   background-color: gainsboro;
+  
 }
 
 
@@ -113,4 +114,11 @@
       margin: 0 auto;
       margin-top: 20px; 
   }
+}
+@media screen and (max-width: 1390px) {
+  .form-container{
+    margin-top: 40px;
+    
+  }
+  
 }

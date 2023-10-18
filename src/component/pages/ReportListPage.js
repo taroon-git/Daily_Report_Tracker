@@ -10,7 +10,7 @@ const ReportListPage = () => {
   const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    axios.get('http://192.168.68.41:8000/api/v1/allreports')
+    axios.get('http://192.168.68.43:8000/api/v1/allreports')
       .then(response => {
         console.log('API response:', response.data);
         setReportsData(response.data);

@@ -6,14 +6,18 @@
 
 .Nheader {
     background: linear-gradient(to bottom, #23262a77, #b66d00); 
+    
     display: flex;
+    
+    width: 100%;
+}
+@media screen and (max-width:1425px) {
+    .Nheader{
+        width:fit-content;
+    }
 }
 
-.Nnav {
-    display: flex;
-    justify-content: end;
-    margin-left: auto;
-}
+
 
 .Nul {
     display: flex;
@@ -44,7 +48,7 @@ button:hover {
     float: left;
 }
 
-@media screen and (max-width: 768px) {
+/* @media screen and (max-width: 768px) {
     .Nnav{
         justify-content: center;
     }
@@ -62,4 +66,4 @@ button:hover {
         text-align: center;
         margin: 10px auto; 
     }
-}
+} */

@@ -15,13 +15,12 @@
               <Link to="/dashboard/reportsub">Report Submission</Link>
             </li>
             <li>
-              <Link to="/dashboard/list">List</Link>
+              <Link to="/dashboard/list">Report List</Link>
             </li>
+            
+            
             <li>
               <Link to="/">Logout</Link>
-            </li>
-            <li>
-              <Link to="/dashboard/employeelist">EmployeeList</Link>
             </li>
           </ul>
         </nav>

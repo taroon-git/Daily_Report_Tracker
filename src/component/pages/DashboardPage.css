@@ -5,7 +5,7 @@
   }
   
   header {
-    background-color: #333;
+    background-color: #ef009f55;
     color: #fff;
     padding: 19px 0;
   }
@@ -32,7 +32,7 @@
     text-decoration: none;
     color: #fff;
     font-weight: bold;
-    font-size: 16px;
+    font-size: 25px;
     transition: color 0.3s ease;
   }
   

@@ -41,7 +41,7 @@ function Login() {
     try {
       const response = await axios.post(
 
-        'http://192.168.68.41:8000/api/v1/login', data,{headers});
+        'http://192.168.68.43:8000/api/v1/login', data,{headers});
 
       if (response.status === 200) {
         // alert('Login successful');
@@ -59,7 +59,7 @@ function Login() {
   return (
 <div id='i'>
 <ToastContainer position='bottom-right' />
-<div className='form-container' style={{ marginTop: '-352px' }}>
+<div className='form-container' style={{ }}>
 
 <h1 className='text-center' style={{ color: '#0275d8' }}>Login</h1>
 <form onSubmit={handleSubmit}>

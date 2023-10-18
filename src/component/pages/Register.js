@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './register.css';
 import './background-animation.css';
+import Home from './Home';
 
 function Register() {
   const [data, setData] = useState({
@@ -34,7 +35,7 @@ function Register() {
     e.preventDefault();
     try {
       console.warn(data);
-      const response = await axios.post('http://192.168.68.41:8000/api/v1/register', data);
+      const response = await axios.post('http://192.168.68.43:8000/api/v1/register', data);
       console.log(response.data);
 
       if (response.status === 'ok') {
@@ -59,6 +60,34 @@ function Register() {
 
   return (
     <div>
+<div className='navigation-home'>
+      <header className='Nheader'>
+          <img
+            id='logo'
+            src='https://media.designrush.com/agencies/326665/conversions/AHOM-Technologies-logo-profile.jpg'
+            height={'68px'}
+            width={'168px'}
+            border-radius={'25px'}
+            alt='Logo'
+          />
+          <h1 id="h1">Daily Report Tracker</h1>
+          
+          <nav className='Nnav'>
+            <ul className='Nul'>
+              <li className='Nli'>
+                <Link to='/'>
+                  <button>Login</button>
+                </Link>
+              </li>
+              <li className='Nli'>
+                <Link to='/contact-us'>
+                  <button>ContactUs</button>
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </header>
+      </div>
     <ToastContainer position='top-right' />
       <div className="container1">
         <div className="form-container1">

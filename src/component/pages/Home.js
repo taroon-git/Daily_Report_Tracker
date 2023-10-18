@@ -41,8 +41,8 @@ function Home() {
         <img
           src={bg}
           style={{
-            height: '430px',
-            width: '626px',
+            height: '440px',
+            width: '900px',
             display: 'flex',
             justifyContent: 'left',
             margin: 'auto',
@@ -50,7 +50,7 @@ function Home() {
           }}
           alt="Background Image"
         />
-        <Login></Login>
+         <Login></Login> 
       </div>
     </div>
   );
