@@ -35,7 +35,7 @@ function Register() {
     e.preventDefault();
     try {
       console.warn(data);
-      const response = await axios.post('http://192.168.68.43:8000/api/v1/register', data);
+      const response = await axios.post('http://192.168.68.49:8000/api/register', data);
       console.log(response.data);
 
       if (response.status === 'ok') {

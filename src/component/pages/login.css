@@ -1,5 +1,35 @@
  /* login.css */
 
+ .password-input-container{
+  display: inline-block;
+  position: relative;
+  border: 1px solid black;
+  display: flex;
+  flex-wrap: nowrap;
+  width: 230px;
+  height: 30px;
+}
+
+.password-input-container input {
+  padding: 10px;
+  outline: none;
+  border: 0px;
+}
+
+.icon {
+  position: absolute;
+  width: 24px;
+  margin-left: -25px;
+  margin-top: 30px;
+
+}
+
+
+
+
+
+
+
 .container {
     display: flex;
     justify-content: center;
@@ -29,8 +59,14 @@
   }
   
   form {
+    
+  }
+
+  .loginform{
     display: flex;
     flex-direction: column;
+    margin-bottom: 20px;
+    width: 380px;
   }
   
   label {
@@ -45,7 +81,7 @@
     
   }
   
-  button {
+  #btnsubmit {
     background-color: #0275d8;
     color: #fff;
     padding: 10px;
@@ -57,6 +93,8 @@
     
   }
 
+
+  
   button[type="login"] {
     width: 70%;
     max-width: 130px;

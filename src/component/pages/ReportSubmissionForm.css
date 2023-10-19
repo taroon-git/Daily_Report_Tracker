@@ -105,17 +105,13 @@
    .formcontainer {
 
     max-width: 600px;
-  
-    margin: 0 auto;
-  
-    /* padding: 20px; */
-  
+    margin: 18px auto;
     background-color: #ccc;
-  
     border: 1px solid #ccc;
-  
     border-radius: 10px;
-  
+    padding-top: 28px;
+    padding-bottom: 50px;
+    margin-top: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   
   }
@@ -134,29 +130,12 @@
   
   .reph6 {
   
-    /* text-align: center; */
-  
     margin: 15px 0;
   
     color: #000;
   
   }
-  
-  /*
-  
-  .reph2,
-  
-  .reph3,
-  
-  .reph4,
-  
-  .reph5,
-  
-  .reph6 {
-  
-    color: #007bff;
-  
-  } */
+
   
    
   

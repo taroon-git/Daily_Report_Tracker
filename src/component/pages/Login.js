@@ -5,8 +5,8 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../pages/login.css';
+import 'font-awesome/css/font-awesome.min.css';
 
- 
 
 function Login() {
   const [data, setData] = useState({
@@ -15,39 +15,38 @@ function Login() {
   });
 
   const [error, setError] = useState();
+  const [showPassword, setShowPassword] = useState(false); // State to control password visibility
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-
     const { name, value } = e.target;
-
     setData((prevData) => ({
-
       ...prevData,
-
       [name]: value,
-
     }));
-
   };
-  const headers = {
 
-    'Content-Type' : 'application/json',
+  const headers = {
+    'Content-Type': 'application/json',
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-
-        'http://192.168.68.43:8000/api/v1/login', data,{headers});
+        'http://192.168.68.43:8000/api/v1/login',
+        data,
+        { headers }
+      );
 
       if (response.status === 200) {
-        // alert('Login successful');
         toast.success('Login successful');
         navigate('/login/dashboard');
-
       } else {
         alert('Login failed. Please check your credentials.');
       }
@@ -56,42 +55,43 @@ function Login() {
     }
   };
 
-  return (
-<div id='i'>
-<ToastContainer position='bottom-right' />
-<div className='form-container' style={{ }}>
+  
 
-<h1 className='text-center' style={{ color: '#0275d8' }}>Login</h1>
-<form onSubmit={handleSubmit}>
-<label htmlFor='username'>Email:</label>
-      <input
+  return (
+    <div id='i'>
+      <ToastContainer position='bottom-right' />
+      <div className='form-container' style={{}}>
+        <h1 className='text-center' style={{ color: '#0275d8' }}>Login</h1>
+        <form className='loginform' onSubmit={handleSubmit}>
+          <label htmlFor='email'>Email:</label>
+          <input
             type='text'
             name='email'
             id='email'
-            require
+            required
             placeholder='Enter your Email'
             value={data.email}
             onChange={handleChange}
           />
 
-<label htmlFor='password'>Password:</label>
-        <input
-              type='password'
-              name='password'
-            id='password'
-            required
-            placeholder='Enter your password'
-            value={data.password}
-            onChange={handleChange}
-          />
-          <button type='login'>Login</button>
-    </form>
-          <Link to='/register'><p>Don't have Account..!</p></Link>
+          <label htmlFor='password'>Password:</label>
+          <div className='password-input-container'>
+          <input type={showPassword ? 'text' : 'password'} />
+
+<i className={`fa ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`} onClick={togglePasswordVisibility}></i>
+
+          </div>
+
+          <button type='submit' id='btnsubmit'>Login</button>
+        </form>
+        <Link to='/register'><p>Don't have an account..!</p></Link>
       </div>
-      </div>
+    </div>
   );
 }
+
 export default Login;
+
 
 
 
